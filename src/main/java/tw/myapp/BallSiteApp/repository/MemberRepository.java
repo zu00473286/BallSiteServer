@@ -11,7 +11,7 @@ public class MemberRepository implements IMemberDao {
     JdbcTemplate jdbcTemplate;
 
     @Override
-    public Long checkUser(String user,String pass) {
+    public Long checkUser(String user, String pass) {
         String query = "select count(*) from Members where email=? and passwd=?";
         long count = jdbcTemplate.queryForObject(query, new Object[]{user,pass},Long.class);
         return count;

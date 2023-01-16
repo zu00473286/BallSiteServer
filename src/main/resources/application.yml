@@ -1,0 +1,5 @@
+server:
+  port: 8123
+spring:
+  datasource:
+    url: jdbc:sqlserver://ballsiteapp.database.windows.net:1433;database=BallSiteDB;user=ballsitegm@ballsiteapp;password=ball0000GM;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;

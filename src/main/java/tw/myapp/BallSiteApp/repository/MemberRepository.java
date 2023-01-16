@@ -12,7 +12,7 @@ public class MemberRepository implements IMemberDao {
 
     @Override
     public Long checkUser(String user,String pass) {
-        String query = "select count(*) from member where email=? and passwd=?";
+        String query = "select count(*) from Members where email=? and passwd=?";
         long count = jdbcTemplate.queryForObject(query, new Object[]{user,pass},Long.class);
         return count;
     }

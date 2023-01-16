@@ -29,4 +29,5 @@ public class MemberController {
                 .getLoginResult(data.getString("user"), data.getString("pass"))
                 .toString();
     }
+
 }

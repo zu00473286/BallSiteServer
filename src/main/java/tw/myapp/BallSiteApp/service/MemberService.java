@@ -9,8 +9,10 @@ import tw.myapp.BallSiteApp.repository.MemberRepository;
 
 @Service
 public class MemberService {
+
     @Autowired
     MemberRepository memberRepository;
+
     public JSONObject getLoginResult( String username, String passwd) {
         long c = memberRepository.checkUser(username,passwd);
         // 準備一個回傳用的 JSON物件

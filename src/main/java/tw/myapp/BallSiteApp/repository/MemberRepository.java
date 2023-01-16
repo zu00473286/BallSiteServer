@@ -5,15 +5,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MemberRepository {
+public class MemberRepository implements IMemberDao {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public long checkUser(String user,String pass){
+    @Override
+    public Long checkUser(String user,String pass) {
         String query = "select count(*) from member where email=? and passwd=?";
         long count = jdbcTemplate.queryForObject(query, new Object[]{user,pass},Long.class);
         return count;
     }
-
 }

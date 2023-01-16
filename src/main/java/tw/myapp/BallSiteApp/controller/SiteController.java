@@ -5,20 +5,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tw.myapp.BallSiteApp.repository.SiteRepository;
+import tw.myapp.BallSiteApp.service.SiteService;
 
 @RestController
 @RequestMapping("/api/site")
 public class SiteController {
 
     @Autowired
-    SiteRepository siteRepo;
-
+    SiteService siteService;
 
     @GetMapping("/count")
-    public String getRoomCount() {
-        long count = siteRepo.getSiteCount();
-        return "總共有" + count + "個球場";
+    public String count() {
+        return siteService.getRoomCount();
     }
-
-
 }

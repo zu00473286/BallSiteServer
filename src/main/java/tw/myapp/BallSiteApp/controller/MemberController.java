@@ -1,6 +1,5 @@
 package tw.myapp.BallSiteApp.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,10 +14,10 @@ public class MemberController {
 
     @Autowired
     MemberService memberService;
+
     //處理 app login 需求
     @PostMapping("/login")
     public String login(@RequestBody String body) {
-
         // 轉成 Java 物件 方便屬性取出
         // 將符合 JSON格式的字串傳入建構式 自動 parse 轉乘 JSONObject
         JSONObject object = new JSONObject(body);
@@ -31,5 +30,3 @@ public class MemberController {
                 .toString();
     }
 }
-
-

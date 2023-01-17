@@ -31,10 +31,10 @@ public class MemberService {
 
     // 回傳註冊帳號訊息
     public JSONObject getAddResult(String name, String mobile, String email, String passwd) {
-        long c = memberRepository.checkEmail(email);
+        long emailExist = memberRepository.checkEmail(email);
         JSONObject responseObject = new JSONObject();
         responseObject.put("type", 2);
-        if ( c == 0 ) {
+        if ( emailExist == 0 ) {
             responseObject.put("status",000);
             responseObject.put("mesg","註冊成功");
             memberRepository.adduser(name, mobile, email, passwd);

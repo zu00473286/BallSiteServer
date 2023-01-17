@@ -40,7 +40,7 @@ public class MemberService {
         if ( emailExist == 0 ) {
             responseObject.put("status",000);
             responseObject.put("mesg","註冊成功");
-            memberRepository.adduser(name, mobile, email, passwd);
+            memberRepository.addUser(name, mobile, email, passwd);
         } else {
             responseObject.put("status",22);
             responseObject.put("mesg","信箱已存在");

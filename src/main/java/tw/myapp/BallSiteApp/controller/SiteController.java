@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import tw.myapp.BallSiteApp.repository.SiteRepository;
 import tw.myapp.BallSiteApp.service.SiteService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/site")
 public class SiteController {
@@ -18,4 +20,11 @@ public class SiteController {
     public String count() {
         return siteService.getRoomCount();
     }
+
+    @GetMapping("/BadmintonAll")
+    public String BadmintonAll() {
+        return null;
+    }
+
+
 }

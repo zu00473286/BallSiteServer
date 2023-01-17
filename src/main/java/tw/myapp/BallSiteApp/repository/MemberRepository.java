@@ -28,7 +28,7 @@ public class MemberRepository implements IMemberDao {
     }
 
     @Override
-    public String adduser(String name, String mobile, String email, String pass) {
+    public String addUser(String name, String mobile, String email, String pass) {
         String add = "INSERT INTO Members (name,mobile,email,passwd) VALUES (?,?,?,?)";
         jdbcTemplate.update(add, new Object[] {name,mobile,email,pass});
         return "";

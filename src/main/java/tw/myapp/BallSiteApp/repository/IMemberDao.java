@@ -16,7 +16,7 @@ public interface IMemberDao {
     public Long checkEmail(String email);
 
     // 呼叫 addUser 回傳註冊帳號是否成功
-    public String adduser(String username, String mobile, String user, String pass);
+    public String addUser(String username, String mobile, String user, String pass);
 
     // 呼叫 getUserAll 回傳 某某會員所有資料(需先確認已登入, 由前端判斷)
     public List<Map<String,Object>> getUserAll(String email);

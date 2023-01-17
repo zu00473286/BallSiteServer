@@ -2,10 +2,7 @@ package tw.myapp.BallSiteApp.controller;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tw.myapp.BallSiteApp.service.MemberService;
 
 @RestController
@@ -48,7 +45,7 @@ public class MemberController {
     }
 
     // 處理 app 顯示會員資料請求
-    @PostMapping("/memberAll")
+    @GetMapping("/memberAll")
     public String memberAll(@RequestBody String body) {
         JSONObject object = new JSONObject(body);
         JSONObject data = object.getJSONObject("data");

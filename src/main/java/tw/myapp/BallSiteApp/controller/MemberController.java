@@ -24,9 +24,26 @@ public class MemberController {
         System.out.println("後端接收訊息: " + object.toString(4));
         System.out.println("data 資料??? " + object.getJSONObject("data").toString(4));
         JSONObject data = object.getJSONObject("data");
-        System.out.println("帳號: " + data.getString("user") + "    密碼= " + data.getString("pass"));
+        System.out.println("帳號: " + data.getString("user") + " ,密碼: " + data.getString("pass"));
         return memberService
                 .getLoginResult(data.getString("user"), data.getString("pass"))
+                .toString();
+    }
+
+    // 處理 app 註冊請求
+    @PostMapping("/register")
+    public String register(@RequestBody String body) {
+        JSONObject object = new JSONObject(body);
+        System.out.println("後端接收訊息: " + object.toString(4));
+        System.out.println("data 資料??? " + object.getJSONObject("data").toString(4));
+        JSONObject data = object.getJSONObject("data");
+        System.out.println("使用者: " + data.getString("username") + " ,帳號: " + data.getString("user"));
+        return memberService
+                .getAddResult(
+                        data.getString("username"),
+                        data.getString("mobile"),
+                        data.getString("user"),
+                        data.getString("pass"))
                 .toString();
     }
 

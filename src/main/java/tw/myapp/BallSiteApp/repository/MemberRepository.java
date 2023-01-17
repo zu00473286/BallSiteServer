@@ -35,9 +35,10 @@ public class MemberRepository implements IMemberDao {
     }
 
     @Override
-    public List<Map<String, Object>> getUserAll() {
-        List<Map<String, Object>> rowset = jdbcTemplate.queryForList("SELECT * FROM members");
-        return rowset;
+    public List<Map<String, Object>> getUserAll(String email) {
+        String search = "SELECT * FROM members WHERE email=?";
+        List<Map<String, Object>> row = jdbcTemplate.queryForList(search);
+        return row;
     }
 
 }

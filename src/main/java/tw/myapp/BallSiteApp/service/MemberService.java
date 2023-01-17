@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tw.myapp.BallSiteApp.repository.MemberRepository;
 
+import java.util.List;
+import java.util.Map;
+
 
 @Service
 public class MemberService {
@@ -42,6 +45,16 @@ public class MemberService {
             responseObject.put("status",22);
             responseObject.put("mesg","信箱已存在");
         }
+        return responseObject;
+    }
+
+    // 回傳會員資料
+    public JSONObject getMemberAll(String email) {
+        List<Map<String, Object>> info = memberRepository.getUserAll(email);
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("type", 2);
+        responseObject.put("status",0);
+        responseObject.put("mesg","撈取資料");
         return responseObject;
     }
 

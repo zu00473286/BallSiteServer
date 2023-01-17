@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
 @Repository
 public class MemberRepository implements IMemberDao {
 
@@ -18,13 +21,23 @@ public class MemberRepository implements IMemberDao {
     }
 
     @Override
-    public long adduser(String username, String mobile, String user, String pass) {
-        String add = "INSERT INTO Members (name,mobile,email,passwd) VALUES (?,?,?,?) " +
-                "WHERE NOT EXISTS (SELECT 1 FROM Members WHERE email='?')";
-        jdbcTemplate.execute(add);
+    public Long checkEmail(String email) {
         String query = "SELECT COUNT(*) FROM members WHERE email=?";
-        long count = jdbcTemplate.queryForObject(query, Long.class);
+        long count = jdbcTemplate.queryForObject(query, new Object[]{email}, Long.class);
         return count;
+    }
+
+    @Override
+    public String adduser(String name, String mobile, String email, String pass) {
+        String add = "INSERT INTO Members (name,mobile,email,passwd) VALUES (?,?,?,?)";
+        jdbcTemplate.update(add, new Object[] {name,mobile,email,pass});
+        return "";
+    }
+
+    @Override
+    public List<Map<String, Object>> getUserAll() {
+        List<Map<String, Object>> rowset = jdbcTemplate.queryForList("SELECT * FROM members");
+        return rowset;
     }
 
 }

@@ -37,13 +37,13 @@ public class MemberController {
         System.out.println("後端接收訊息: " + object.toString(4));
         System.out.println("data 資料??? " + object.getJSONObject("data").toString(4));
         JSONObject data = object.getJSONObject("data");
-        System.out.println("使用者: " + data.getString("username") + " ,帳號: " + data.getString("user"));
+        System.out.println("使用者: " + data.getString("name") + " ,帳號: " + data.getString("email"));
         return memberService
                 .getAddResult(
-                        data.getString("username"),
+                        data.getString("name"),
                         data.getString("mobile"),
-                        data.getString("user"),
-                        data.getString("pass"))
+                        data.getString("email"),
+                        data.getString("passwd"))
                 .toString();
     }
 

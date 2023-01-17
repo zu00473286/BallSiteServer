@@ -15,11 +15,13 @@ public class SiteRepository implements ISiteDao {
 
     @Override
     public Long getSiteCount() {
-        return jdbcTemplate.queryForObject("select count(*) from Sites", Long.class);
+        return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM sites", Long.class);
     }
 
     @Override
     public List<Map<String, Object>> getBadmintonAll() {
-        return null;
+        String query = "SELECT * FROM sites WHERE category_id=1";
+        List<Map<String, Object>> all = jdbcTemplate.queryForList(query);
+        return all;
     }
 }

@@ -1,6 +1,5 @@
 package tw.myapp.BallSiteApp.service;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,15 +48,13 @@ public class MemberService {
     }
 
     // 回傳會員資料
-    public JSONObject getMemberAll(String email) {
-        List<Map<String, Object>> info = memberRepository.getUserAll(email);
-        /*
-        JSONObject responseObject = new JSONObject();
-        responseObject.put("type", 2);
-        responseObject.put("status",0);
-        responseObject.put("mesg","撈取資料");
-         */
-        return (JSONObject) info;
+    public List<Map<String, Object>> getMemberAll() {
+        return memberRepository.getUserAll();
+
+        //JSONObject responseObject = new JSONObject();
+        //responseObject.put("type", 2);
+        //responseObject.put("status",0);
+        //responseObject.put("mesg","撈取資料");
     }
 
 }

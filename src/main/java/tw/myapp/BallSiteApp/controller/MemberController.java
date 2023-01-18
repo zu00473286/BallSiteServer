@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tw.myapp.BallSiteApp.service.MemberService;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/member")
 public class MemberController {
@@ -45,12 +48,12 @@ public class MemberController {
     }
 
     // 處理 app 顯示會員資料請求
-    @GetMapping("/memberAll/{email}")
-    public String memberAll(@RequestBody String email) {
-        JSONObject object = new JSONObject(email);
-        JSONObject data = object.getJSONObject("data");
-        System.out.println("請求來源帳號: " + data.getString("email"));
-        return memberService.getMemberAll(data.getString("email")).toString();
+    @GetMapping("/memberAll")
+    public List<Map<String, Object>> memberAll() {
+        //JSONObject object = new JSONObject(email);
+        //JSONObject data = object.getJSONObject("data");
+        //System.out.println("請求來源帳號: " + data.getString("email"));
+        return memberService.getMemberAll();
     }
 
 }

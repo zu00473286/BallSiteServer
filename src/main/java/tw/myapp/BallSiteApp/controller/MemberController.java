@@ -45,9 +45,9 @@ public class MemberController {
     }
 
     // 處理 app 顯示會員資料請求
-    @GetMapping("/memberAll")
-    public String memberAll(@RequestBody String body) {
-        JSONObject object = new JSONObject(body);
+    @GetMapping("/memberAll/{email}")
+    public String memberAll(@RequestBody String email) {
+        JSONObject object = new JSONObject(email);
         JSONObject data = object.getJSONObject("data");
         System.out.println("請求來源帳號: " + data.getString("email"));
         return memberService.getMemberAll(data.getString("email")).toString();

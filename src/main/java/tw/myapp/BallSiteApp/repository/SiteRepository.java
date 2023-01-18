@@ -19,8 +19,8 @@ public class SiteRepository implements ISiteDao {
     }
 
     @Override
-    public List<Map<String, Object>> getBadmintonAll() {
-        String query = "SELECT * FROM sites WHERE category_id=1";
+    public List<Map<String, Object>> getSiteAll() {
+        String query = "SELECT * FROM sites";
         List<Map<String, Object>> all = jdbcTemplate.queryForList(query);
         return all;
     }

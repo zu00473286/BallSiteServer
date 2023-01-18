@@ -20,7 +20,7 @@ public class SiteService {
         return "共有" + count + "個球場";
     }
 
-    public List<Map<String, Object>> getBadmintonAll() {
-        return siteRepository.getBadmintonAll();
+    public List<Map<String, Object>> getSiteAll() {
+        return siteRepository.getSiteAll();
     }
 }

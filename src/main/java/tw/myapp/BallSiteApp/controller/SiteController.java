@@ -24,10 +24,10 @@ public class SiteController {
         return siteService.getRoomCount();
     }
 
-    // 處理 app 顯示羽球場資料請求
-    @GetMapping("/BadmintonAll")
-    public List<Map<String, Object>>  BadmintonAll() {
-        return siteService.getBadmintonAll();
+    // 處理 app 球場資料請求
+    @GetMapping("/SiteAll")
+    public List<Map<String, Object>>  SiteAll() {
+        return siteService.getSiteAll();
 
     }
 

@@ -1,6 +1,5 @@
 package tw.myapp.BallSiteApp.repository;
 
-import java.util.List;
 import java.util.Map;
 
 /*
@@ -19,5 +18,5 @@ public interface IMemberDao {
     public String addUser(String username, String mobile, String user, String pass);
 
     // 呼叫 getUserAll 回傳 某某會員所有資料(需先確認已登入, 由前端判斷)
-    public List<Map<String, Object>> getUserAll(String email);
+    public Map<String, Object> getUserAll(String email);
 }

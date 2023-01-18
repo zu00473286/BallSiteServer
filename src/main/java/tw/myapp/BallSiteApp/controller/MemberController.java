@@ -48,11 +48,11 @@ public class MemberController {
     }
 
     // 處理 app 顯示會員資料請求
-    @GetMapping("/memberAll/{email}")
-    public String memberAll(@PathVariable String email) {
+    @GetMapping("/memberAll")
+    public Map<String, Object> memberAll(@PathVariable String email) {
         JSONObject object = new JSONObject(email);
         JSONObject data = object.getJSONObject("data");
         System.out.println("請求來源帳號: " + data.getString("email"));
-        return memberService.getMemberAll(data.getString("email")).toString();
+        return memberService.getMemberAll(data.getString(email));
     }
 }

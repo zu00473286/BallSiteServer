@@ -49,7 +49,7 @@ public class MemberController {
     public String memberAll(@RequestBody String body) {
         JSONObject object = new JSONObject(body);
         JSONObject data = object.getJSONObject("data");
-        System.out.println("帳號: " + data.getString("email"));
+        System.out.println("請求來源帳號: " + data.getString("email"));
         return memberService.getMemberAll(data.getString("email")).toString();
     }
 

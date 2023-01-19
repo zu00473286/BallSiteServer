@@ -27,6 +27,13 @@ public class SiteRepository implements ISiteDao {
     }
 
     @Override
+    public List<Map<String, Object>> getPeriodId() {
+        String query = "SELECT * FROM period";
+        List<Map<String, Object>> period = jdbcTemplate.queryForList(query);
+        return period;
+    }
+
+    @Override
     public Long checkRent(int site_id, Date day, int period_id) {
         String query = "SELECT COUNT(*) FROM RentPremises WHERE site_id=? AND day=? AND period_id=?";
         long count = jdbcTemplate.queryForObject(query, new Object[]{site_id, day, period_id}, Long.class);

@@ -12,6 +12,9 @@ public interface ISiteDao {
     // 呼叫 getSiteAll 回傳 所有場地的資訊
     public List<Map<String, Object>> getSiteAll();
 
+    // 呼叫 getPeriodId 回傳 所有時段及編號的資料
+    public List<Map<String, Object>> getPeriodId();
+
     // 呼叫 checkRent 確認 該球場該時段是否已被租借
     public Long checkRent(int site_id, Date day, int period_id);
 

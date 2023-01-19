@@ -28,6 +28,12 @@ public class SiteController {
         return siteService.getSiteAll();
     }
 
+    // 處理 app 租借時段及編號請求
+    @GetMapping("/PeriodId")
+    public List<Map<String, Object>> PeriodId() {
+        return siteService.getPeriodAll();
+    }
+
     // 處理 app 租借球場請求
     @PostMapping("/rentSite")
     public String rentSite(@RequestBody String body) {

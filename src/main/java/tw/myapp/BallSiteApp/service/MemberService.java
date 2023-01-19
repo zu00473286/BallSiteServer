@@ -33,6 +33,7 @@ public class MemberService {
 
     // 回傳註冊帳號訊息
     public JSONObject getAddResult(String name, String mobile, String email, String passwd) {
+        // 若查詢信箱數量為0 表示未被註冊過
         long emailExist = memberRepository.checkEmail(email);
         JSONObject responseObject = new JSONObject();
         responseObject.put("type", 2);

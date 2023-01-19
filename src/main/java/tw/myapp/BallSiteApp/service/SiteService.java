@@ -24,7 +24,15 @@ public class SiteService {
         return siteRepository.getSiteAll();
     }
 
+    // 取得資料庫 時段及其編號
+    public List<Map<String, Object>> getPeriodAll() {
+        return siteRepository.getPeriodId();
+    }
+
+
+    // 租借場地資料寫入
     public JSONObject getAddResult(int site_id, int member_id, Date day, int period_id) {
+        // 判斷是否已被租借 若為0表示無資料(未被租借)
         long rentExist = siteRepository.checkRent(site_id, day, period_id);
         JSONObject responseObject = new JSONObject();
         responseObject.put("type", 2);

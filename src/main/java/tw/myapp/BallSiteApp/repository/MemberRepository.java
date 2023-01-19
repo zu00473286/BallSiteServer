@@ -13,6 +13,7 @@ public class MemberRepository implements IMemberDao {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    // 帳號密碼 檢查是否正確
     @Override
     public Long checkUser(String user, String pass) {
         String query = "SELECT COUNT(*) FROM members WHERE email=? AND passwd=?";
@@ -20,6 +21,7 @@ public class MemberRepository implements IMemberDao {
         return count;
     }
 
+    // 搜尋信箱檢查是否已註冊過
     @Override
     public Long checkEmail(String email) {
         String query = "SELECT COUNT(*) FROM members WHERE email=?";
@@ -27,6 +29,7 @@ public class MemberRepository implements IMemberDao {
         return count;
     }
 
+    // 註冊會員 將資料寫入資料庫
     @Override
     public String addUser(String name, String mobile, String email, String pass) {
         String add = "INSERT INTO Members (name,mobile,email,passwd) VALUES (?,?,?,?)";
@@ -34,11 +37,20 @@ public class MemberRepository implements IMemberDao {
         return "";
     }
 
+    // 以會員email 搜尋該會員全部資料
     @Override
     public Map<String, Object> getUserAll(String email) {
-        String search = "SELECT * FROM members WHERE email=?";
-        Map<String, Object> row = jdbcTemplate.queryForMap(search,email);
+        String query = "SELECT * FROM members WHERE email=?";
+        Map<String, Object> row = jdbcTemplate.queryForMap(query, email);
         return row;
+    }
+
+    // 以會員編號 搜尋該會員租借場地的紀錄
+    @Override
+    public List<Map<String, Object>> getRentRecord(int member_id) {
+        String query = "SELECT * FROM rentPremises WHERE member_id=?";
+        List<Map<String, Object>> rowSet = jdbcTemplate.queryForList(query, member_id);
+        return rowSet;
     }
 
 }

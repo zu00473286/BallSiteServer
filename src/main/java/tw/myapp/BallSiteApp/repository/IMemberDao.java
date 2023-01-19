@@ -1,5 +1,6 @@
 package tw.myapp.BallSiteApp.repository;
 
+import java.util.List;
 import java.util.Map;
 
 /*
@@ -19,4 +20,7 @@ public interface IMemberDao {
 
     // 呼叫 getUserAll 回傳 某某會員所有資料(需先確認已登入, 由前端判斷)
     public Map<String, Object> getUserAll(String email);
+
+    // 呼叫 getRentRecord 回傳 某某會員的租借場地紀錄(需先確認已登入)
+    public List<Map<String, Object>> getRentRecord(int member_id);
 }

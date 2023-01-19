@@ -60,4 +60,11 @@ public class MemberService {
         return info;
     }
 
+    // 回傳會員租借紀錄
+    public List<Map<String, Object>> getRecordAll(int member_id) {
+        List<Map<String, Object>> record = memberRepository.getRentRecord(member_id);
+        return record;
+    }
+
+
 }

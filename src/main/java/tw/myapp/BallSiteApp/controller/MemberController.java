@@ -55,4 +55,14 @@ public class MemberController {
         System.out.println("請求來源帳號: " + data.getString("email"));
         return memberService.getMemberAll(data.getString(email));
     }
+
+    // 處理 app 會員租借紀錄請求
+    @GetMapping("/rentRecord")
+    public List<Map<String, Object>> rentRecord(@PathVariable int member_id) {
+        JSONObject object = new JSONObject(member_id);
+        JSONObject data = object.getJSONObject("data");
+        System.out.println("會員編號: " + data.getInt("member_id"));
+        return memberService.getRecordAll(data.getInt(String.valueOf(member_id)));
+    }
+
 }

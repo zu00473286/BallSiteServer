@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tw.myapp.BallSiteApp.repository.SiteRepository;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +30,7 @@ public class SiteService {
 
 
     // 租借場地資料寫入
-    public JSONObject getAddResult(int site_id, int member_id, Date day, int period_id) {
+    public JSONObject getAddResult(int site_id, int member_id, String day, int period_id) {
         // 判斷是否已被租借 若為0表示無資料(未被租借)
         long rentExist = siteRepository.checkRent(site_id, day, period_id);
         JSONObject responseObject = new JSONObject();

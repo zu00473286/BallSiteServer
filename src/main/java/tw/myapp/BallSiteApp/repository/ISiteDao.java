@@ -16,9 +16,9 @@ public interface ISiteDao {
     public List<Map<String, Object>> getPeriodId();
 
     // 呼叫 checkRent 確認 該球場該時段是否已被租借
-    public Long checkRent(int site_id, Date day, int period_id);
+    public Long checkRent(int site_id, String day, int period_id);
 
     // 呼叫 addRent 回傳 租借紀錄是否以寫入
-    public Long addRent(int site_id, int member_id, Date day, int period_id);
+    public Long addRent(int site_id, int member_id, String day, int period_id);
 
 }

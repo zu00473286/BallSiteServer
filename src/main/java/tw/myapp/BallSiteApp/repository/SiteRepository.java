@@ -34,14 +34,14 @@ public class SiteRepository implements ISiteDao {
     }
 
     @Override
-    public Long checkRent(int site_id, Date day, int period_id) {
+    public Long checkRent(int site_id, String day, int period_id) {
         String query = "SELECT COUNT(*) FROM RentPremises WHERE site_id=? AND day=? AND period_id=?";
         long count = jdbcTemplate.queryForObject(query, new Object[]{site_id, day, period_id}, Long.class);
         return count;
     }
 
     @Override
-    public Long addRent(int site_id, int member_id, Date day, int period_id) {
+    public Long addRent(int site_id, int member_id, String day, int period_id) {
         String add = "INSERT INTO RentPremises (site_id, member_id, day, period_id) VALUES (?,?,?,?)";
         jdbcTemplate.update(add, new Object[]{site_id, member_id, day, period_id});
         return null;

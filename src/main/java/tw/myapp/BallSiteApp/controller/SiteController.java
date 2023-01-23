@@ -16,19 +16,19 @@ public class SiteController {
     @Autowired
     SiteService siteService;
 
-    @GetMapping("/count")
+    @PostMapping("/count")
     public String count() {
         return siteService.getRoomCount();
     }
 
     // 處理 app 球場資料請求    postman已測試
-    @GetMapping("/SiteAll")
+    @PostMapping("/SiteAll")
     public List<Map<String, Object>>  SiteAll() {
         return siteService.getSiteAll();
     }
 
     // 處理 app 租借時段及編號請求     postman已測試
-    @GetMapping("/PeriodId")
+    @PostMapping("/PeriodId")
     public List<Map<String, Object>> PeriodId() {
         return siteService.getPeriodAll();
     }

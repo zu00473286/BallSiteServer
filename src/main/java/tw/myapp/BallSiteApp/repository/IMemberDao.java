@@ -12,6 +12,9 @@ public interface IMemberDao {
     // 呼叫 checkUser 回傳 登入是否驗證成功
     public Long checkUser(String user, String pass);
 
+    // 呼叫 getUser 回傳 會員編號、姓名、電話
+    public Long getUser(String user, String pass);
+
     // 呼叫 checkEmail 確認 帳號是否已存在
     public Long checkEmail(String email);
 

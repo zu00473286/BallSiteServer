@@ -21,6 +21,13 @@ public class MemberRepository implements IMemberDao {
         return count;
     }
 
+    @Override
+    public Long getUser(String user, String pass) {
+        String query = "SELECT (member_id, name, mobile) FROM members WHERE email=? AND passwd=?";
+        Long userSet = jdbcTemplate.queryForObject(query, new Object[]{user,pass}, Long.class);
+        return userSet;
+    }
+
     // 搜尋信箱檢查是否已註冊過
     @Override
     public Long checkEmail(String email) {
